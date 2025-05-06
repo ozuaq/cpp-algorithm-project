@@ -1,4 +1,4 @@
-add_library(sort_lib STATIC merge_sort.cpp)
+add_library(sort_lib STATIC merge_sort.cpp quick_sort.cpp)
 
 target_include_directories(sort_lib 
     PUBLIC

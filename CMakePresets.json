@@ -1,57 +1,60 @@
 {
-    "version": 6,
-    "cmakeMinimumRequired": {
-      "major": 3,
-      "minor": 25,
-      "patch": 0
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base-config",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++"
+      },
+      "warnings": {
+        "dev": true,
+        "deprecated": true
+      },
+      "errors": {
+        "dev": false,
+        "deprecated": false
+      }
     },
-    "configurePresets": [
-      {
-        "name": "base-config",
-        "hidden": true,
-        "generator": "Ninja",
-        "binaryDir": "${sourceDir}/build/${presetName}",
-        "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-        "warnings": {
-          "dev": true,
-          "deprecated": true
-        },
-        "errors": {
-          "dev": false,
-          "deprecated": false
-        }
-      },
-      {
-        "name": "debug",
-        "inherits": "base-config",
-        "displayName": "Debug Build (Ninja)",
-        "description": "Configure project for Debug build.",
-        "cacheVariables": {
-          "CMAKE_BUILD_TYPE": "Debug"
-        }
-      },
-      {
-        "name": "release",
-        "inherits": "base-config",
-        "displayName": "Release Build (Ninja)",
-        "description": "Configure project for Release build.",
-        "cacheVariables": {
-          "CMAKE_BUILD_TYPE": "Release"
-        }
+    {
+      "name": "debug",
+      "inherits": "base-config",
+      "displayName": "Debug Build (Ninja)",
+      "description": "Configure project for Debug build.",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
       }
-    ],
-    "buildPresets": [
-      {
-        "name": "debug",
-        "configurePreset": "debug",
-        "displayName": "Build (Debug)",
-        "description": "Build the project using the Debug configuration."
-      },
-      {
-        "name": "release",
-        "configurePreset": "release",
-        "displayName": "Build (Release)",
-        "description": "Build the project using the Release configuration."
+    },
+    {
+      "name": "release",
+      "inherits": "base-config",
+      "displayName": "Release Build (Ninja)",
+      "description": "Configure project for Release build.",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
       }
-    ]
-  }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "displayName": "Build (Debug)",
+      "description": "Build the project using the Debug configuration."
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "displayName": "Build (Release)",
+      "description": "Build the project using the Release configuration."
+    }
+  ]
+}

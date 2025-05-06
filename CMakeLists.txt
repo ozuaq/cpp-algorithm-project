@@ -8,7 +8,8 @@ set(CMAKE_CXX_EXTENSIONS False)
 
 add_subdirectory(src)
 
-# enable_testing()
-# find_package(GTest CONFIG REQUIRED)
-# add_subdirectory(tests)
+set(PROJECT_ALL_TESTS ProjectAllTests)
+enable_testing()
+find_package(GTest CONFIG REQUIRED)
+add_subdirectory(tests)
 
